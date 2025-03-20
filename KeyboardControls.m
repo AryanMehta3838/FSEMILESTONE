@@ -4,9 +4,9 @@ while 1
     pause(0.1);
     switch key
         case 'uparrow'
-            moveForward(100);
+            moveForward(100,1);
         case 'downarrow'
-            moveBackward(100);
+            moveBackward(100,1);
         case 'rightarrow'
             turnRight();
         case 'leftarrow'
@@ -19,14 +19,18 @@ while 1
 end
 CloseKeyboard();
 
-function move = moveForward(Speed)
+function move = moveForward(Speed, Time)
     brick.MoveMotor('A', Speed);
     brick.MoveMotor('B', Speed);
+    pause(Time);
+    Stop();
     move = 1;
 end
-function move = moveBackward(Speed)
+function move = moveBackward(Speed,time)
     brick.MoveMotor('A',-1*Speed);
     brick.MoveMotor('B',-1*Speed);
+    pause(time);
+    Stop();
     move = 1;
 end
 function stop = Stop()
