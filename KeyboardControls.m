@@ -1,10 +1,15 @@
 global key
-% the ultrasonic should be port 1, and the color sensor should be 4
+% the ultrasonic should be port 1, and the color sensor should be 4, the
+% algorithm should hug the closest left wall, and traverse the whole thing
+% that way. Requires ultrasonic sensor to be facing left and the touch
+% sensor extended with a stick facing forward
 InitKeyboard();
 brick.SetColorMode(4,2);
 function traverse(obj)
     while 1
         colorCheck();
+        
+
 
         
 
@@ -55,10 +60,7 @@ end
 function distance = getDist(obj)
     distance = brick.UltrasonicDist(1);
 end
-function distArray = Spin(obj)
-    %want this to do a spin and collect the distance to the nearest wall in
-    %each direction, returning an array with the distances: [^,>,back,<]
-end
+
 
     
     
